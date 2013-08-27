@@ -1,4 +1,6 @@
 Lmo::Application.routes.draw do
+  resources :collections
+
   resources :contents
 
   # The priority is based upon order of creation:
