@@ -1,0 +1,18 @@
+<h1>New content collection association</h1>
+
+<%= form_tag create_new_association_path, :method => :post do %>
+
+  <div class="field">
+  	<%= hidden_field_tag :content_id, @content.id %>
+  </div>
+
+  <div class="field">
+  	Collection <br />
+  	<%= select_tag :collection_id, options_from_collection_for_select(@collections, "id", "name") %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', contents_path %>

@@ -2,6 +2,10 @@ Lmo::Application.routes.draw do
   resources :collections
 
   resources :contents
+  
+  match 'contents/new_association/:id' => 'contents#new_association', :as => 'new_association', :via => :get
+  match 'contents/create_new_association' => 'contents#create_collection_association', :as => 'create_new_association', :via => :post 
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

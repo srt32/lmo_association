@@ -21,7 +21,7 @@ class ContentsController < ApplicationController
     end
   end
 
-  def new_collection_association
+  def new_association
     @content = Content.find_by_id(params[:id])
     @collections = Collection.all 
 
@@ -34,9 +34,9 @@ class ContentsController < ApplicationController
   def create_collection_association
     content = Content.find_by_id(params[:content_id])
     collection = Collection.find(params[:collection_id])
-    content.collections.add collection
+    content.collections << collection
     content.save
-    redirect_to root_path
+    redirect_to contents_path
   end
 
   # GET /contents/new
