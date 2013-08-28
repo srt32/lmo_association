@@ -21,6 +21,24 @@ class ContentsController < ApplicationController
     end
   end
 
+  def new_collection_association
+    @content = Content.find_by_id(params[:id])
+    @collections = Collection.all 
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @content }
+    end
+  end
+
+  def create_collection_association
+    content = Content.find_by_id(params[:content_id])
+    collection = Collection.find(params[:collection_id])
+    content.collections.add collection
+    content.save
+    redirect_to root_path
+  end
+
   # GET /contents/new
   # GET /contents/new.json
   def new
